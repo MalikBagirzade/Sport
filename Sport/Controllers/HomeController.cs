@@ -25,6 +25,16 @@ namespace Sport.Controllers
             return View();
         }
 
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Classes()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> LoginAsync(Login login)
         {
