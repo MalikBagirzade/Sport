@@ -30,6 +30,11 @@ namespace Sport.Controllers
             return View();
         }
 
+        public IActionResult Register()
+        {
+            return View();
+        }
+
         public IActionResult Classes()
         {
             return View();

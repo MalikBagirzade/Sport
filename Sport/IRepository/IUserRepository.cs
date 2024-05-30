@@ -1,4 +1,5 @@
-﻿using Sport.Models;
+﻿using Entites.Models;
+using Sport.Models;
 
 namespace Sport.IRespoitory
 {
@@ -6,7 +7,7 @@ namespace Sport.IRespoitory
     {
         bool Login(Login req);
 
-
+        Task Signin(User req);
 
     }
 }

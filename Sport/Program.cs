@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
+using Sport.Entites;
 using Sport.IRespoitory;
 using Sport.Repository;
 
@@ -13,7 +15,12 @@ namespace Sport
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            builder.Services.AddSingleton<IUserRepository, UserRepository>();
+            builder.Services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+
+            builder.Services.AddTransient<IUserRepository, UserRepository>();
 
           builder.Services.AddAuthentication(options =>
             {

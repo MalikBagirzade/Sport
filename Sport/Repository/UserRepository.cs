@@ -1,18 +1,28 @@
-﻿using Sport.IRespoitory;
+﻿using Entites.Models;
+using Sport.Entites;
+using Sport.IRespoitory;
 using Sport.Models;
 
 namespace Sport.Repository
 {
     public class UserRepository:IUserRepository
     {
-        static List<Login> logins = new List<Login>()
+        private readonly AppDbContext _context;
+
+        public UserRepository(AppDbContext context)
         {
-            new Login() {UserName="melik",Password="aaaa"}
-        };
+            _context = context;
+        }
 
         public bool Login(Login req)
         {
-            return logins.Where(mm=>mm.Password.Equals(req.Password)&&mm.UserName.Equals(req.UserName)).Any();
+            return _context.Users.Where(mm=>mm.Password.Equals(req.Password)&&mm.UserName.Equals(req.UserName)).Any();
+        }
+
+        public async Task Signin(User req)
+        {
+            await  _context.Users.AddAsync(req);
+            await _context.SaveChangesAsync ();
         }
     }
 }
