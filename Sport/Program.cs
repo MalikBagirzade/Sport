@@ -21,6 +21,9 @@ namespace Sport
             });
 
             builder.Services.AddTransient<IUserRepository, UserRepository>();
+            builder.Services.AddTransient<IInstructorRepository, InstructorRepository>();
+            builder.Services.AddTransient<IGateShapeProductRepository, GateShapeProductRepository>();
+            builder.Services.AddTransient<IMembershipRepository, MembershipRepository>();
 
           builder.Services.AddAuthentication(options =>
             {
@@ -57,6 +60,8 @@ namespace Sport
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            AppDbInitializer.Seed(app);
 
             app.Run();
         }

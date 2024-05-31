@@ -1,0 +1,50 @@
+﻿@model Membership
+
+<section class="section  text-white" id="call-to-action">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <h2>Membership Details</h2>
+
+                    <div>
+                        <dl class="dl-horizontal">
+                            <dt>Photo</dt>
+                            <dd><img src="@Model.PhotoUrl" alt="Membership Photo" width="200" /></dd>
+
+                            <dt>Name</dt>
+                            <dd>@Model.Name</dd>
+
+                            <dt>Description</dt>
+                            <dd>@Model.Description</dd>
+
+                            <dt>Gym Access Hours</dt>
+                            <dd>@Model.GymAccessHours</dd>
+
+                            <dt>Instrument Count</dt>
+                            <dd>@Model.InstrumentCount</dd>
+
+                            <dt>Classes Per Week</dt>
+                            <dd>@Model.ClassesPerWeek</dd>
+
+                            <dt>Membership Duration</dt>
+                            <dd>@Model.MembershipDuration</dd>
+
+                            <dt>Free Drinking Package</dt>
+                            <dd>@Model.FreeDrinkingPackage</dd>
+
+                            <dt>Personal Instructor Count</dt>
+                            <dd>@Model.PersonalInstructorCount</dd>
+
+                            <dt>Price</dt>
+                            <dd>@Model.Price</dd>
+                        </dl>
+                    </div>
+                    <div>                        
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

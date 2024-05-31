@@ -1,0 +1,45 @@
+﻿@model Instructor
+
+<section class="section" id="call-to-action">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content text-white">
+                    <h2>Instructor Details</h2>
+
+                    <div>
+                        <dl class="dl-horizontal">
+                            <dt>Photo</dt>
+                            <dd><img src="@Model.PhotoUrl" alt="Instructor Photo" width="200" /></dd>
+
+                            <dt>Full Name</dt>
+                            <dd>@Model.FullName</dd>
+
+                            <dt>Bio</dt>
+                            <dd>@Model.Bio</dd>
+
+                            <dt>Specialty</dt>
+                            <dd>@Model.Specialty</dd>
+
+                            <dt>Facebook Url</dt>
+                            <dd>@Model.FacebookUrl</dd>
+
+                            <dt>Phone Number</dt>
+                            <dd>@Model.PhoneNumber</dd>
+
+                            <dt>Instagram Url</dt>
+                            <dd>@Model.InstagramUrl</dd>
+
+                            <dt>Linkedin Url</dt>
+                            <dd>@Model.LinkedinUrl</dd>
+                        </dl>
+                    </div>
+                    <div>
+                        
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

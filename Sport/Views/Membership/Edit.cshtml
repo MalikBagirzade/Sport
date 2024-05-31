@@ -1,0 +1,80 @@
+﻿@model Membership
+<section class="section  text-white" id="call-to-action">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <h2>Edit</h2>
+
+                    <form asp-action="Edit">
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="form-group">
+                            <label asp-for="PhotoUrl" class="control-label"></label>
+                            <input asp-for="PhotoUrl" class="form-control" />
+                            <span asp-validation-for="PhotoUrl" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Description" class="control-label"></label>
+                            <input asp-for="Description" class="form-control" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="GymAccessHours" class="control-label"></label>
+                            <input asp-for="GymAccessHours" class="form-control" />
+                            <span asp-validation-for="GymAccessHours" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="InstrumentCount" class="control-label"></label>
+                            <input asp-for="InstrumentCount" class="form-control" />
+                            <span asp-validation-for="InstrumentCount" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="ClassesPerWeek" class="control-label"></label>
+                            <input asp-for="ClassesPerWeek" class="form-control" />
+                            <span asp-validation-for="ClassesPerWeek" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="MembershipDuration" class="control-label"></label>
+                            <input asp-for="MembershipDuration" class="form-control" />
+                            <span asp-validation-for="MembershipDuration" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="FreeDrinkingPackage" class="control-label"></label>
+                            <input asp-for="FreeDrinkingPackage" class="form-control" />
+                            <span asp-validation-for="FreeDrinkingPackage" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="PersonalInstructorCount" class="control-label"></label>
+                            <input asp-for="PersonalInstructorCount" class="form-control" />
+                            <span asp-validation-for="PersonalInstructorCount" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Price" class="control-label"></label>
+                            <input asp-for="Price" class="form-control" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+
+                        <!-- InstructorMemberships için bir form alanı eklemek istiyorsanız buraya ekleyebilirsiniz -->
+
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

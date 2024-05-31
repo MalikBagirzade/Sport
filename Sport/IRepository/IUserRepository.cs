@@ -1,13 +1,16 @@
-﻿using Entites.Models;
+﻿
+using Sport.Entites;
 using Sport.Models;
 
 namespace Sport.IRespoitory
 {
     public interface IUserRepository
     {
-        bool Login(Login req);
+        User? Login(Login req);
 
         Task Signin(User req);
+
+        User? GetUser(User req);
 
     }
 }

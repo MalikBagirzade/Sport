@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Sport.IRespoitory;
+using Microsoft.EntityFrameworkCore;
 
 namespace Sport.Controllers
 {
@@ -35,6 +36,37 @@ namespace Sport.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Register(RegisterViewModel req)
+        {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Error");
+                return View("Register");
+
+            }
+            var u= repo.GetUser(new Entites.User
+            {
+                Email = req.Email,
+                UserName = req.UserName
+            });
+
+            if (u is not null)
+            {
+                ModelState.AddModelError("", "user exsist");
+                return View("Register");
+            }
+
+            repo.Signin(new Entites.User
+            {
+                Email = req.Email,
+                FullName = req.FullName,
+                Password = req.Password,
+                UserName = req.UserName
+            });
+            return View("Index");
+        }
+
         public IActionResult Classes()
         {
             return View();
@@ -43,26 +75,24 @@ namespace Sport.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginAsync(Login login)
         {
-            var b= repo.Login(login);
-            if (!b)
+            var u = repo.Login(login);
+            if (u is null)
             {
-                ModelState.AddModelError("", "Istifadeci adi ve ya parol sehhvdir");
+                ModelState.AddModelError("", "Istifadeci tapilmadi");
                 return View("index");
-            }
+            }          
             var claims = new List<Claim>()
                     {
-                        new Claim(ClaimTypes.NameIdentifier,"1"),
-                        new Claim(ClaimTypes.Name,login.UserName),
+                        new Claim(ClaimTypes.NameIdentifier,u.Id.ToString()),
+                        new Claim(ClaimTypes.Name,u.FullName),
                     };
+            if (u.UserName == "admin")
+                claims.Add(new Claim(ClaimTypes.Role, "Admin"));
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-          
-
-            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);          
-           
 
             var principial = new ClaimsPrincipal(identity);
             await HttpContext.SignInAsync(principial);
-
             return RedirectToAction("Index", "Home");
         }
 

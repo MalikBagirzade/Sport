@@ -1,0 +1,39 @@
+﻿@model GateShapeProduct
+<section class="section  text-white" id="call-to-action">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <h2>Details</h2>
+
+                    <div>
+                        <h4>Product Details</h4>
+                        <hr />
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.PhotoUrl)
+                            </dt>
+                            <dd>
+                                <img src="@Model.PhotoUrl" alt="Product Image" style="max-width: 200px; max-height: 200px;" />
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Name)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Description)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Description)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Price)
+                            </dt>
+                            <dd>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
